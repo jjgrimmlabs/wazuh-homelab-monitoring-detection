@@ -8,6 +8,8 @@ I'm building a Wazuh-based SIEM environment to practice proactive threat detecti
   - 1x Kali Linux VM (attacker)
 All systems are hosted in Proxmox and live on an isolated VLAN with no internet access to simulate a controlled internal network.
 
+<img width="268" alt="Screenshot 2025-06-23 at 9 46 03 PM" src="https://github.com/user-attachments/assets/975fca63-61c4-488d-9464-434a59242698" />
+
 ### Why? ###
 - Learn how to configure and monitor a SIEM
 - Understand attacker behavior through safe, offline simulations
