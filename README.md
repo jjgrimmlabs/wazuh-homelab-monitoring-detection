@@ -23,7 +23,7 @@ All systems are hosted in Proxmox and live on an isolated VLAN with no internet 
 ------------------------------------------------------------------------
 
 ### How ###
-I’ll simulate attacks from the Kali Linux VM targeting the Windows machine using:
+I’ll simulate attacks from the Kali Linux VM targeting another Kali Linux VM using:
   - PowerShell payloads (offline)
   - Exploiting open ports or vulnerable services
   - Obfuscation
