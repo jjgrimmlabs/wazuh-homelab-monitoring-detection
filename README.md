@@ -75,7 +75,7 @@ Verified both agents appeared in the Wazuh dashboard.
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 ###  ### SSH Brute Force ### ### 
-Thanks for checking out my ongoing Wazuh SIEM penetration and detection project. If you have suggestions, critiques, or tips feel free to connect with me on LinkedIn. I’m open to learning and improving. For my first simulated attack, I ran a basic SSH brute force attempt on my victim VM to highlight how important it is to harden SSH and use strong credentials.
+Thanks for checking out my ongoing Wazuh SIEM penetration and detection project. If you have suggestions, feedback, or tips feel free to connect with me on LinkedIn. I’m open to learning and improving. For my first simulated attack, I ran a basic SSH brute force attempt on my victim VM to highlight how important it is to harden SSH and use strong credentials.
 
 ### Setup ### 
 To simulate poor security practices, I misconfigured the victim VM (Kali Linux) by editing PermitRootLogin using nano /etc/ssh/sshd_config file and enabling PermitRootLogin to yes. Then I verified SSH was running by checking the service status: systemctl status ssh. Once confirmed, I logged out of the victim machine and switched to my attacker VM.
