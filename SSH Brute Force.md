@@ -21,7 +21,7 @@ Login to the root account from attacker IP
 
 <img width="758" alt="Screenshot 2025-07-06 at 8 32 35 PM" src="https://github.com/user-attachments/assets/34864149-0896-4555-999c-1e6b95d581e4" />
 
-### Revert section ###
+### Cleanup/Revert ###
 To close the SSH vulnerability:
 
 I disabled PermitRootLogin login using nano /etc/ssh/sshd_config
