@@ -66,9 +66,9 @@ After finishing, I checked Wazuh to see what was logged. Here's what I noticed:
 
 ### Lessons Learned ###
 * Visibility is everything. If defenders can’t see commands like bash -i or TCP connections to strange IPs, attackers can operate freely.
-* This basic reverse shell was eye-opening as it showed how easy it is to lose control of a machine once access is gained and the important of reinforcing:
+* This basic reverse shell was eye-opening as it showed how easy it is to lose control of a machine once access is gained and the importance of reinforcing:
     * Strong passwords
-    * EDR on endpoins
+    * EDR on endpoints
     * Proper logging (bash history, syscalls, network monitoring)
 
 Personally: For me doing hands-on projects like this makes the MITRE ATT&CK framework click for me. I learn best by trying things, messing up, and figuring them out by go over whatI need to learn or improve on!
