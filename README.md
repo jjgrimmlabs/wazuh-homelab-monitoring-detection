@@ -39,14 +39,7 @@ Then use the Wazuh Manager to:
   This iterative process helps me learn both offense and defense and gain insight into what sysadmins and SOC analysts must monitor and secure daily.
 
 ------------------------------------------------------------------------
-### Upcoming Plans ###
-  - [x] Deploy Wazuh in VLAN
-  - [X] Install Wazuh agents on endpoints
-  - [ ] Simulate PowerShell command
-  - [ ] Document alert timeline in Wazuh
-  - [ ] Harden endpoint + re-test
 
-------------------------------------------------------------------------
 ### Setup Process ###
 Uploaded Debian 12 .iso to Proxmox and created the VM.
 Installed the OS, configured a static IP, and enabled UFW.
@@ -73,44 +66,3 @@ Verified both agents appeared in the Wazuh dashboard.
 <img width="853" alt="Wazuh Reporting Agents" src="https://github.com/user-attachments/assets/857326f3-d941-4c1a-ad2a-7bd9a516b2c1" />
 
 ------------------------------------------------------------------------
-------------------------------------------------------------------------
-###  ### SSH Brute Force ### ### 
-Thanks for checking out my ongoing Wazuh SIEM penetration and detection project. If you have suggestions, feedback, or tips feel free to connect with me on LinkedIn. I’m open to learning and improving. For my first simulated attack, I ran a basic SSH brute force attempt on my victim VM to highlight how important it is to harden SSH and use strong credentials.
-
-### Setup ### 
-To simulate poor security practices, I misconfigured the victim VM (Kali Linux) by editing PermitRootLogin using nano /etc/ssh/sshd_config file and enabling PermitRootLogin to yes. Then I verified SSH was running by checking the service status: systemctl status ssh. Once confirmed, I logged out of the victim machine and switched to my attacker VM.
-
-- Before launching the attack, I verified connectivity with: ping <victim_ip>.
-- Then I created a custom password list using: echo -e "abcd\npassword\n12345\n7890" > /home/attacker/pwrdlist.txt (Each password is on a new line using \n).
-
-### Attack ###
-With the list created, I ran Hydra to brute force SSH: hydra -l root -P /home/attacker/pwrdlist.txt ssh://<victim_ip>
-Hydra attempted each password until it finds the correct one (if there is one from the list). This confirms the risk of weak credentials, especially with root login enabled.
-
-<img width="1215" alt="Screenshot 2025-06-26 at 10 07 21 PM" src="https://github.com/user-attachments/assets/ae9abd0a-73cc-4ecb-aa9d-80f10ae993f4" />
-
-### SIEM Detection Review ### 
-After the attack, I logged into the Wazuh dashboard to verify if the activity was detected.
-Wazuh correctly flagged/identified:
-- Multiple failed SSH attempts
-- A successful login from the attacker IP
-- Login to the root account from attacker IP
-
-<img width="1051" alt="Screenshot 2025-06-26 at 10 07 42 PM" src="https://github.com/user-attachments/assets/30aa2eaf-ef06-418e-a2ca-6a50c24dedfd" />
-
-### Revert section ### 
-To close the SSH vulnerability:
-- I disabled PermitRootLogin login using nano /etc/ssh/sshd_config
-- Restarted SSH to apply changes sudo systemctl restart ssh
-
-
-### Lessons Learned ### 
-- Default configurations can be dangerous if not changed.
-- SSH brute force attacks are still common and easily automated.
-- Wazuh effectively detects brute force patterns and successful logins.
-
-This basic simulation showcases why it's critical to:
-- Disable password-based root SSH access
-- Use key-based auth
-- Harden credentials
-- Monitor and alert on failed login attempts
